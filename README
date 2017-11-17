@@ -1,7 +1,11 @@
 ==================================================
 Batch_McPAT v1.0
 
-Modified the vanilla McPAT application (described below) to perform batch Runtime dynamic Power (RT-DP) computation by accepting as input, a folder containing a batch of XML files. The batch RT-DP computation is tailored for the ARM_AtomicSimpleCPU_template.xml processor description template. This work was done as part of the COSSIM project. http://www.cossim.org/ 
+Modified the vanilla McPAT application (described below) to perform batch Runtime dynamic Power (RT-DP) computation 
+by accepting as input, a folder containing a batch of XML files. The batch RT-DP computation is tailored for the 
+ARM_AtomicSimpleCPU_template.xml processor description template. 
+
+This work was done as part of the COSSIM project. http://www.cossim.org/ 
 
 ==================================================
   __  __      ____   _  _____    
