@@ -131,8 +131,7 @@ int main(int argc,char *argv[])
 	}
 
 	std::chrono::high_resolution_clock::time_point t1, t2;
-	t1 = std::chrono::high_resolution_clock::now();
-
+	
 	//Init XML Parser
 	ParseXML *myParser= new ParseXML();
 	char buf[20], str[200];
@@ -150,7 +149,7 @@ int main(int argc,char *argv[])
 	  the component activity factors as reported from cGEM5
 	  and input data is generated to feed the RT-DP computation
 	 */
-	cout<<"      : input XML files parsed..";
+	cout<<"      : input XML files parsed and generated activity factors input..";
 	for (int i=0; i<batchSize; i++){
 		sprintf(buf, "%d.xml", i);
 		cout<<"\r"<< i + 1;
@@ -159,25 +158,20 @@ int main(int argc,char *argv[])
 		strcpy(str, fb);
 	}
 	cout<<endl;
-	t2 = std::chrono::high_resolution_clock::now();
-	auto parseDuration = std::chrono::duration_cast<std::chrono::nanoseconds>( t2 - t1 ).count();
-	cout.precision(12);
-	if(is_debug) cout << "Time taken for parsing and generating input data = " << (double)parseDuration/1E9 <<"s" <<endl;
 
 	t1 = std::chrono::high_resolution_clock::now();
-	if(is_debug) cout << "Calling batch RT-DP Compute function.."<< endl;
 	batch_RT_DP_compute(seedProc, dataIn, dataOut, batchSize);
 	t2 = std::chrono::high_resolution_clock::now();
 	auto batch_rt_dp_duration = std::chrono::duration_cast<std::chrono::nanoseconds>( t2 - t1 ).count();
 	cout.precision(12);
-	if(is_debug) cout << "Time taken for batch RT-DP computation (including scalar init) = " << (double)batch_rt_dp_duration/1E9 <<"s" <<endl;
+	//if(is_debug) cout << "Time taken for batch RT-DP computation (including scalar init) = " << (double)batch_rt_dp_duration/1E9 <<"s" <<endl;
 
 	t1 = std::chrono::high_resolution_clock::now();
 	dump_RT_DP_Output_CSV(dataOut, batchSize);
 	t2 = std::chrono::high_resolution_clock::now();
 	auto csvDuration = std::chrono::duration_cast<std::chrono::nanoseconds>( t2 - t1 ).count();
 	cout.precision(12);
-	if(is_debug) cout << "Time taken for dumping batch RT-DP output into CSV file = " << (double)csvDuration/1E9 <<"s" <<endl;
+	//if(is_debug) cout << "Time taken for dumping batch RT-DP output into CSV file = " << (double)csvDuration/1E9 <<"s" <<endl;
 
 	delete myParser, dataIn, dataOut, seedProc;
 	return 0;
@@ -850,7 +844,7 @@ void batch_RT_DP_compute(Processor proc, float* dataIn, float* dataOut, int batc
 	std::chrono::high_resolution_clock::time_point t2 = std::chrono::high_resolution_clock::now();
 	auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>( t2 - t1 ).count();
 	cout.precision(12);
-	if(is_debug) cout << "Batch RT Dynamic Power Computation time = " << (double) duration/1E9 <<"s" <<endl;
+	//if(is_debug) cout << "Batch RT Dynamic Power Computation time = " << (double) duration/1E9 <<"s" <<endl;
 
 }
 
