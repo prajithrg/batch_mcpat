@@ -162,7 +162,7 @@ int main(int argc,char *argv[])
 	t2 = std::chrono::high_resolution_clock::now();
 	auto parseDuration = std::chrono::duration_cast<std::chrono::nanoseconds>( t2 - t1 ).count();
 	cout.precision(12);
-	if(is_debug) cout << "Time taken for parsing and generating input data = " << (double)parseDuration/10E9 <<"s" <<endl;
+	if(is_debug) cout << "Time taken for parsing and generating input data = " << (double)parseDuration/1E9 <<"s" <<endl;
 
 	t1 = std::chrono::high_resolution_clock::now();
 	if(is_debug) cout << "Calling batch RT-DP Compute function.."<< endl;
@@ -170,14 +170,14 @@ int main(int argc,char *argv[])
 	t2 = std::chrono::high_resolution_clock::now();
 	auto batch_rt_dp_duration = std::chrono::duration_cast<std::chrono::nanoseconds>( t2 - t1 ).count();
 	cout.precision(12);
-	if(is_debug) cout << "Time taken for batch RT-DP computation (including scalar init) = " << (double)batch_rt_dp_duration/10E9 <<"s" <<endl;
+	if(is_debug) cout << "Time taken for batch RT-DP computation (including scalar init) = " << (double)batch_rt_dp_duration/1E9 <<"s" <<endl;
 
 	t1 = std::chrono::high_resolution_clock::now();
 	dump_RT_DP_Output_CSV(dataOut, batchSize);
 	t2 = std::chrono::high_resolution_clock::now();
 	auto csvDuration = std::chrono::duration_cast<std::chrono::nanoseconds>( t2 - t1 ).count();
 	cout.precision(12);
-	if(is_debug) cout << "Time taken for dumping batch RT-DP output into CSV file = " << (double)csvDuration/10E9 <<"s" <<endl;
+	if(is_debug) cout << "Time taken for dumping batch RT-DP output into CSV file = " << (double)csvDuration/1E9 <<"s" <<endl;
 
 	delete myParser, dataIn, dataOut, seedProc;
 	return 0;
@@ -850,7 +850,7 @@ void batch_RT_DP_compute(Processor proc, float* dataIn, float* dataOut, int batc
 	std::chrono::high_resolution_clock::time_point t2 = std::chrono::high_resolution_clock::now();
 	auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>( t2 - t1 ).count();
 	cout.precision(12);
-	if(is_debug) cout << "Batch RT Dynamic Power Computation time = " << (double) duration/10E9 <<"s" <<endl;
+	if(is_debug) cout << "Batch RT Dynamic Power Computation time = " << (double) duration/1E9 <<"s" <<endl;
 
 }
 
