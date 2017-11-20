@@ -6,7 +6,9 @@ Modified vanilla McPAT application (described below) to perform batch Runtime dy
 This work was done as part of the COSSIM project. http://www.cossim.org/ 
 
 Usage: ./batch_mcpat -infile < absolute directory path + batch XML file prefix >  -batchSize < No of input XML files > 
+
 Example: ./batch_mcpat -infile /home/demo/COSSIM_Maxeler_DEMO/COSSIM/gem5/McPat/node0/mcpatIn -batchSize 1000
+
 This takes as input, a batch of XML files (mcpatIn0.xml ... mcpatIn999.xml) and outputs the Batch_McPAT_RT_DP_Output.csv file in the current working directory.
 
 ==================================================
